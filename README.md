@@ -6,6 +6,6 @@ A microsoft-paint style app written in the Java Programming Language
 
 ## Workings
 
-This app will use the Java Foundations AWT library
+This app will use the Java Swing Library
 
-(I used the intro tutorial found *[here](https://www.geeksforgeeks.org/java/java-awt-tutorial/)*)
+(Further information can be found *[here](https://www.geeksforgeeks.org/java/introduction-to-java-swing/)*)
