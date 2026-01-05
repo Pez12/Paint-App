@@ -2,10 +2,8 @@ package gui;
 
 //Import libraries
 import javax.swing.*;
-import java.awt.event.*;
 import java.util.HashMap;
 import java.awt.Component;
-
 /*
 Define an abstract class that outlines how windows can be created within the framework of the application
 This is to simplify how the Java Swing library is used within the application
@@ -17,7 +15,7 @@ public abstract class Window{
     private final JFrame frame = new JFrame();
     private final HashMap<String, JLabel> labels = new HashMap<>();
     private final HashMap<String, JButton> buttons = new HashMap<>();
-    private final HashMap<String, ImageIcon> images = new HashMap<>();
+    private final HashMap<String, JLabel> images = new HashMap<>();
 
     //Above are common components and below is a general hashMap for components not covered above
     private final HashMap<String, Component> components = new HashMap<>();
@@ -37,4 +35,45 @@ public abstract class Window{
 
         frame.setVisible(true);
     }
+
+
+    //Define a method that adds a label to the frame
+    public void addLabel(String identifier, String text, int pos_x, int pos_y, int size_x, int size_y) {
+        JLabel label = new JLabel(text);
+        label.setBounds(pos_x, pos_y, size_x, size_y);
+
+        labels.put(identifier, label);
+        frame.add(label);
+    }
+
+    //Define a method to get the text displayed by a label
+    public String getLabelText(String identifier) {
+        try {
+            return labels.get(identifier).getText();
+        } catch (NullPointerException e) {
+            throw new ComponentNotFoundError(identifier, "labels");
+        }
+    }
+
+    //Define a method to change the text displayed by a label
+    public void updateLabelText(String identifier, String text) {
+        try {
+            labels.get(identifier).setText(text);
+        } catch (NullPointerException e) {
+            throw new ComponentNotFoundError(identifier, "labels");
+        }
+    }
+
+    //Define a method to add an image to the window
+    public void addImage(String identifier, String image_path, int pos_x, int pos_y, int size_x, int size_y) {
+        ImageIcon image = new ImageIcon(image_path);
+        JLabel imageLabel = new JLabel(image);
+
+        imageLabel.setBounds(pos_x, pos_y, size_x, size_y);
+        images.put(identifier, imageLabel);
+        frame.add(imageLabel);
+    }
+
+
+
 }
