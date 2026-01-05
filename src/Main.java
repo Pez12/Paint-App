@@ -6,6 +6,6 @@ public class Main {
     //Define a main method to be executed
     public static void main (String[] args) {
         //Bring up a Hello World GUI Window
-        TestWindow window = new TestWindow();
+        TestWindow test = new TestWindow();
     }
 }

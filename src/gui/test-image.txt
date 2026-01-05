@@ -1,0 +1,5 @@
+The file test-image.png was downloaded from:
+https://commons.wikimedia.org/wiki/File:Cc-public_domain_mark_white.svg
+And is in the public domain
+
+It is to be used as a test image for the project to see if a custom icon can be successfully used
