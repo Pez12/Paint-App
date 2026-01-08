@@ -18,6 +18,8 @@ public abstract class Window{
     private final HashMap<String, JButton> textButtons = new HashMap<>();
     private final HashMap<String, JButton> imageButtons = new HashMap<>();
     private final HashMap<String, JLabel> images = new HashMap<>();
+    private final HashMap<String, JTextField> textFields = new HashMap<>();
+    private final HashMap<String, JTextArea> textAreas = new HashMap<>();
 
     //Above are common components and below is a general hashMap for components not covered above
     private final HashMap<String, Component> components = new HashMap<>();
@@ -150,6 +152,7 @@ public abstract class Window{
         button.addActionListener(listener);
     }
 
+    //Define a method to add a new text
 
 
     /*DEFINE GETTER METHODS FOR ALL THE FRAME'S COMPONENTS*/
@@ -169,6 +172,7 @@ public abstract class Window{
         }
     }
 
+    //The getButton method is more complicated than the others because the 2 button maps are abstracted so they seem as 1
     public JButton getButton(String identifier) {
         //Check to see which hashMap the identifier is in (if it exists)
         boolean textButtonExists = textButtons.containsKey(identifier);
@@ -185,6 +189,22 @@ public abstract class Window{
         } else {
             //If the identifier is not in either HashMap, throw an exception
             throw new ComponentNotFoundError(identifier, "textButtons or imageButtons");
+        }
+    }
+
+    public JTextArea getTextArea(String identifier) {
+        if (textAreas.containsKey(identifier)) {
+            return textAreas.get(identifier);
+        } else {
+            throw new ComponentNotFoundError(identifier, "textAreas");
+        }
+    }
+
+    public JTextField getTextField(String identifier) {
+        if (textAreas.containsKey(identifier)) {
+            return textFields.get(identifier);
+        } else {
+            throw new ComponentNotFoundError(identifier, "textFields");
         }
     }
 }
